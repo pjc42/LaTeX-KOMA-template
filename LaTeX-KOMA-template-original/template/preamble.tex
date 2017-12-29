@@ -363,8 +363,7 @@
 fontsize=\myfontsize,%% size of the main text
 paper=\mypapersize,  %% paper format
 parskip=\myparskip,  %% vertical space between paragraphs (instead of indenting first par-line)
-%DIV=calc,            %% calculates a good DIV value for type area; 66 characters/line is great
-DIV=16,              %% reducing margins for single page
+DIV=calc,            %% calculates a good DIV value for type area; 66 characters/line is great
 headinclude=true,    %% is header part of margin space or part of page content?
 footinclude=false,   %% is footer part of margin space or part of page content?
 open=right,          %% "right" or "left": start new chapter on right or left page
@@ -376,7 +375,6 @@ BCOR=\myBCOR,        %% binding correction (depends on how you bind
                      %% the resulting printout.
 \mylaterality        %% oneside: document is not printed on left and right sides, only right side
                      %% twoside: document is printed on left and right sides
-pagenumber=footright
 ]{scrbook}  %% article class of KOMA: "scrartcl", "scrreprt", or "scrbook".
             %% CAUTION: If documentclass will be changed, *many* other things
             %%          change as well like heading structure, ...
@@ -425,8 +423,7 @@ pagenumber=footright
 %doc% package for defining header and footer information. Please refer to the \myacro{KOMA}
 %doc% script documentation how to use this package.
 %doc%
-%PJC% replaced obsolete scrlayer2 with scrlayer-scrpage as per scrpage2 warning
-\usepackage{scrlayer-scrpage} %%  advanced page style using KOMA
+\usepackage{scrpage2} %%  advanced page style using KOMA
 
 
 %doc%
