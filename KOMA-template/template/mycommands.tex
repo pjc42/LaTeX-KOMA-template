@@ -92,6 +92,56 @@
   \whiledo{\value{myclonecnt}>0}{#2\addtocounter{myclonecnt}{-1}}%
 }
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  force inclusion of graphicxs even in draft mode
+%%%    ref: https://tex.stackexchange.com/questions/95334/how-can-i-set-the-final-option-for-the-graphicx-package-in-xetex
+%%%    ref: https://tex.stackexchange.com/questions/78616/how-to-pass-the-draft-option-for-pdfpages-to-includegraphics
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{ifthen}
+\usepackage{keyval}
+
+\newcommand{\graphicxForceDraftEqualFalse}[1]{
+	\ifthenelse{\equal{#1}{true}}{%
+		% Gin is Setkeys symbol/code for graphicx package
+		\setkeys{Gin}{draft=false}
+	} % else
+	{}
+	% false, do nothing, inherit from global options as normal	
+	\ifthenelse{\equal{#1}{false}}{}{}	
+}
+
+%doc% 
+%doc% \subsection \ttext{graphicxForceDraftFalse} override class draft option
+%doc% Use this to override the document class draft option because sometimes
+%doc% you want draft for everything except pics and charts. Usage:
+%doc% \begin{verbatim}
+%doc%   \graphicxForceDraftEqualFalse{true}  % sets gaphicx draft=false
+%doc%   \graphicxForceDraftEqualFalse{false} % sets gaphicx inherits from document class
+%doc% \end{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 %old% %d oc% 
 %old% %d oc% \subsection{\texttt{fixxme} --- sidemark something as unfinished}
 %old% %d oc% 
@@ -103,6 +153,10 @@
 %old% \newcommand{\fixxme}[1]{%%
 %old% \textcolor{red}{FIXXME}\marginpar{\textcolor{red}{#1}}%%
 %old% }
+
+
+
+
 
 
 %%%% End 

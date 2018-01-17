@@ -128,6 +128,7 @@
 %% English, otherwise it is in German.
 
 
+
 %% ========================================================================
 %%%% Document metadata
 %% ========================================================================
@@ -167,6 +168,12 @@
 %%%% MISC command definitions
 %% ========================================================================
 \input{template/mycommands}
+
+
+\graphicxForceDraftEqualFalse{true}
+%% if true graphicx ignores global draft option and forces draft=false
+%% if false does nothing, inherits from global document class option
+
 
 %% ========================================================================
 %%%% Typographic settings

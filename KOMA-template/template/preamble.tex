@@ -359,27 +359,62 @@
 %doc% create a document which is printed on both, left side and right side.
 %doc%
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%  set document class to KOMA-script `scrbook`
+%%%  use variables set in main.tex
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \documentclass[<global options>]{<class>}
+% The options in the <global options> list will be tried by the class and any package loaded in the preamble, 
+% but won't show errors or warnings if not known by a package.
+
+
 \documentclass[%
 fontsize=\myfontsize,%% size of the main text
 paper=\mypapersize,  %% paper format
+%
 parskip=\myparskip,  %% vertical space between paragraphs (instead of indenting first par-line)
-%DIV=calc,            %% calculates a good DIV value for type area; 66 characters/line is great
-DIV=16,              %% reducing margins for single page
+%
+%DIV is the proportions to break page into: 9-> big margins, 14-> normal margins, 16 -> very narrow
+%DIV=calc,           %% calculates a good DIV value for type area; 66 characters/line is great
+DIV=14,              %% reducing margins for single page
+                     %% page layout options for KOMA see sec 2.6
+%                     
+BCOR=\myBCOR,        %% binding correction, adds extra space to allow for binding 
+					 %% not needed unless binding a book 
+%
 headinclude=true,    %% is header part of margin space or part of page content?
 footinclude=false,   %% is footer part of margin space or part of page content?
-open=right,          %% "right" or "left": start new chapter on right or left page
+%
+open=any,            %% "any", "right" or "left": start new chapter on any or right or left page
+                     %% has no impact in single sided \mylaterality=single because LHS, RHS not distinguished
+					 %% see sec 3.16, Structuring of Documents
+%
 appendixprefix=true, %% adds appendix prefix; only for book-classes with \backmatter
+%
 bibliography=totoc,  %% adds the bibliography to table of contents (without number)
+					 %% see sec 3.23 Bibliography
+% useful to have draft for everything except pics and charts
+%   ref: https://tex.stackexchange.com/questions/49277/what-does-the-draft-mode-change/49283#49283
+%   ref: https://tex.stackexchange.com/questions/95334/how-can-i-set-the-final-option-for-the-graphicx-package-in-xetex
+% normally this class draft pushed to all packages loaded subsequently, need to override draft for
+% graphicxs when it is loaded, (with final=true)
 draft=\mydraft,      %% if true: included graphics are omitted and black boxes
                      %%          mark overfull boxes in margin space
-BCOR=\myBCOR,        %% binding correction (depends on how you bind
+                     %% see secs 3.3,  4.5 Draft Mode
+%                     
                      %% the resulting printout.
 \mylaterality        %% oneside: document is not printed on left and right sides, only right side
-                     %% twoside: document is printed on left and right sides
-pagenumber=footright
+					 %% twoside: document is printed on left and right sides
+%					 
 ]{scrbook}  %% article class of KOMA: "scrartcl", "scrreprt", or "scrbook".
             %% CAUTION: If documentclass will be changed, *many* other things
             %%          change as well like heading structure, ...
+
 
 
 
@@ -427,7 +462,11 @@ pagenumber=footright
 %doc%
 %PJC% replaced obsolete scrlayer2 with scrlayer-scrpage as per scrpage2 warning
 \usepackage{scrlayer-scrpage} %%  advanced page style using KOMA
-
+%%% PJC remove this
+%\usepackage[DIV=14,BCOR=0,headinclude=true,footinclude=true]{typearea}
+\ifoot[]{HSE: does this work in draft}
+\cfoot[]{}
+\ofoot[\pagemark]{\pagemark} 
 
 %doc%
 %doc% \subsection{References}\myimportant
@@ -576,6 +615,11 @@ hyperref=true, %% using hyperref-package references
 %doc% The widely used package to use graphical images within a \LaTeX{} document.
 \usepackage[pdftex]{graphicx}
 
+
+
+
+
+
 %doc% \item[\texttt{\href{https://secure.wikimedia.org/wikibooks/en/wiki/LaTeX/Formatting\#Other\_symbols}{%%
 %doc% pifont%%
 %doc% }}]
@@ -593,6 +637,7 @@ hyperref=true, %% using hyperref-package references
 \newboolean{myaddcolophon}
 \newboolean{myaddlistoftodos}
 \newboolean{english_affidavit}
+\newboolean{force}
 
 
 %doc% \item[\texttt{\href{http://www.ctan.org/tex-archive/fonts/eurosym}{%%
