@@ -122,6 +122,114 @@
 %doc%   \graphicxForceDraftEqualFalse{false} % sets gaphicx inherits from document class
 %doc% \end{verbatim}
 
+%doc% 
+%doc% debugPrintVar, debugMessage print variable/message to document and log
+%doc% logPrintVar, logMessage print variable/message to log only
+
+\newcommand{\debugPrintVar}[1]{%
+	\typeout{===> (debug) \string#1 ::: #1}%
+	\begin{flushleft}
+===> (debug) \string#1 ::: #1 %
+	\end{flushleft}
+}
+
+\newcommand{\debugMessage}[1]{%
+	\typeout{===> (debug) #1}%
+	\begin{flushleft}
+===> (debug) #1%
+	\end{flushleft}
+}
+
+\begin{comment}
+\newcommand{\debugBanner}{%
+	\begin{flushleft}
+		\\
+		===============================================================================\\
+		\\
+	\end{flushleft}
+	\typeout{===============================================================================}
+}
+
+
+
+\newcommand{\logBanner}{%
+	\typeout{===============================================================================}
+}
+
+\end{comment}
+
+\newcommand{\logPrintVar}[1]{%
+	\typeout{===> (info ) \string#1 ::: #1}%
+}
+\newcommand{\logMessage}[1]{%
+	\typeout{===> (info ) #1}%
+}
+
+
+
+
+\newcommand{\singleline}{
+	\begin{flushleft}
+		\rule[0pt]{\textwidth}{1pt}
+	\end{flushleft}
+}
+
+\newcommand{\doubleline}{
+	\begin{flushleft}
+		\rule[0pt]{\textwidth}{1pt}
+		\rule[\baselineskip]{\textwidth}{1pt}
+	\end{flushleft}
+}
+
+\newcommand{\debugBanner}{%
+	\begin{flushleft}
+		\vspace{\baselineskip}
+		\doubleline
+		=== debug info
+		\singleline
+	\end{flushleft}%
+	%\typeout{=======================================================}
+	%\typeout{==}
+}
+
+\newenvironment{debugBox}[1][unnamed debugBox]{%
+	% write to log
+	\typeout{========================================================}
+	\typeout{debug LaTeX: #1}
+	\typeout{--------------------------------------------------------}
+	% write to doc
+	\begin{center}
+		\begin{tabular}{|p{0.9\textwidth}|}
+			\hline\\
+			%\vspace{0.5\baselineskip}
+			
+			debug \ \   L\textsc{a}\TeX{}: #1\\
+			%\hline\hline\\
+			
+			\rule[0pt]{0.85\textwidth}{1pt}\\
+			\rule[\baselineskip]{0.85\textwidth}{1pt}\\
+		}
+		%debug info goes here
+		{ 
+			\\\hline
+		\end{tabular} 
+	\end{center}
+	% write end to log
+	\typeout{========================================================} 
+}
+
+
+\newenvironment{logBox}[1][unnamed logBox]{%
+	% write to log
+	\typeout{========================================================}
+	\typeout{info LaTeX: #1}
+	\typeout{--------------------------------------------------------}
+}
+%log info goes here
+{ 
+	% write end to log
+	\typeout{========================================================} 
+}
 
 
 

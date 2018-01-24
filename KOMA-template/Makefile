@@ -1,11 +1,15 @@
 ## please modify the following line for naming the end products (PDFs, ZIPs, ...)
 PROJECTNAME = "Projectname"
 
-## -----------------------------------------
-##       DO NOT EDIT BELOW THIS LINE
-## -----------------------------------------
+# only works in latex environment
+# my powershell env for latex flagged by latex_varsall
+ifndef latex_varsall
+  $(info  ====> latex environment not set)
+  $(error latex_varsall is not set)
 
-## Makefile von Karl Voit (Karl@Voit.net)
+else
+  $(info latex_varsall $(latex_varsall))
+endif
 
 ## some Makefile-hints taken from: 
 ## http://www.ctan.org/tex-archive/help/uk-tex-faq/Makefile
@@ -15,13 +19,12 @@ MAINDOCUMENTBASENAME = main
 MAINDOCUMENTFILENAME = ${MAINDOCUMENTBASENAME}.tex
 ## COMMANDS:
 PDFLATEX_CMD = pdflatex
-#BIBTEX_CMD = bibtex
 BIBTEX_CMD = biber
 MAKEIDX_CMD = makeindex
-DATESTAMP = `/bin/date +%Y-%m-%d`
+DATESTAMP = 'b:/bin/gnuwin32/bin/date +%Y-%m-%d'
 DATESTAMP_AND_PROJECT = ${DATESTAMP}_${PROJECTNAME}
 #PDFVIEWER = xpdf
-PDFVIEWER = acroread
+PDFVIEWER = SumatraPDF.exe
 TEMPLATEDOCUBASENAME = Template-Documentation
 TEMPLATEDOCUFILE = ${TEMPLATEDOCUBASENAME}.tex
 
@@ -30,7 +33,7 @@ TEMPLATEDOCUFILE = ${TEMPLATEDOCUBASENAME}.tex
 #help	help	this help
 .PHONY: help
 help:
-	@sed -n 's/^#help//p' < Makefile
+	@sed -n 's/^#help//p' Makefile
 
 #help	all	see "pdf"
 .PHONY: all
@@ -80,6 +83,7 @@ force:
 # TOOLS:
 
 #help	zip	create ZIP-file
+# runs 7-zip on windows, change to zip on linux
 .PHONY: zip
 zip: purge pdf clean
 	zip -r ../${PROJECTNAME}_${TIMESTAMP}.zip *
