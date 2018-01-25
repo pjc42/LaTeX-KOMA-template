@@ -1,0 +1,81 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+% % % % % % % % % % %Nomgroup % % % % % % % % % % % % % % % % %
+% % % % % % % % % % % % % % % % %Chandra Has % % % % % % % % % % % %
+
+% % % % % % % % % % % %chandrahashbti@gmail.com % % % % % % % %
+
+
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{lipsum, xcolor}
+\usepackage{hyperref}
+\usepackage[intoc,refpage]{nomencl}
+\usepackage{etoolbox}
+\usepackage{ifthen}
+\makenomenclature
+
+
+\title{\color{red}Grouping and Sorting of Nomenclature}
+\author{\color{blue}Chandra Has}
+
+
+
+
+\renewcommand{\pagedeclaration}[1]{\dotfill \hyperpage{#1}}
+\newcommand{\nmr}[3][R]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmg}[3][G]{\nomenclature[#1]{#2}{#3}}
+
+\renewcommand{\nomgroup}[1]{ %
+\ifthenelse{\equal{#1}{R}}{\vspace{1cm} \item[\bfseries \Large Roman]}{ %
+\ifthenelse{\equal{#1}{G}}{\item[\bfseries \Large Greek]}{}
+}
+}
+
+
+
+
+
+%\newcommand{\chstr}[1]{
+%
+%\ifstrequal{#1}{ch}{name: Chandra Has}{no name}
+%
+%}
+
+
+
+
+
+
+\begin{document}
+\pagecolor{red!3}
+\maketitle
+\tableofcontents
+\clearpage
+\lipsum*
+
+\nmr[RRa]{R}{Radius of circle}
+\nmr[RGr]{$G_\mathrm{r}$}{Gravity}
+\nmr[RMa]{$M_\mathrm{m}$}{Mass of moon}
+\nmg[Gang]{$\alpha_{\mathrm{a}}$}{Angular acceleration}
+\nmg[Gvisc]{$\eta$}{Viscosity}
+\nmg[Gvisc0]{$\eta_0$}{Viscosity of fluid 2}
+
+\lipsum*
+
+\nmr[RCe]{C}{Center of circle}
+\nmr[REe]{$E^{\mathrm{O}}$}{Energy}
+\nmr[Rno]{n}{No. of proton}
+\nmg[GShape]{$\beta$}{Shape factor}
+\nmg[GSurface]{$\Gamma_{\mathrm{e}}$}{Surface excess}
+
+
+\printnomenclature
+
+
+
+
+
+
+\end{document}  

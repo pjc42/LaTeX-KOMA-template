@@ -1,0 +1,26 @@
+\begin{thenomenclature} 
+
+ \nomgroup{G}
+
+  \item [{$\alpha _{\mathrm {a}}$}]\begingroup Angular acceleration\nomeqref {0}
+		\nompageref{3}
+  \item [{$\beta $}]\begingroup Shape factor\nomeqref {0}\nompageref{4}
+  \item [{$\Gamma _{\mathrm {e}}$}]\begingroup Surface excess\nomeqref {0}
+		\nompageref{4}
+  \item [{$\eta $}]\begingroup Viscosity\nomeqref {0}\nompageref{3}
+  \item [{$\eta _0$}]\begingroup Viscosity of fluid 2\nomeqref {0}
+		\nompageref{3}
+
+ \nomgroup{R}
+
+  \item [{C}]\begingroup Center of circle\nomeqref {0}\nompageref{4}
+  \item [{$E^{\mathrm {O}}$}]\begingroup Energy\nomeqref {0}
+		\nompageref{4}
+  \item [{$G_\mathrm {r}$}]\begingroup Gravity\nomeqref {0}
+		\nompageref{3}
+  \item [{$M_\mathrm {m}$}]\begingroup Mass of moon\nomeqref {0}
+		\nompageref{3}
+  \item [{n}]\begingroup No. of proton\nomeqref {0}\nompageref{4}
+  \item [{R}]\begingroup Radius of circle\nomeqref {0}\nompageref{3}
+
+\end{thenomenclature}

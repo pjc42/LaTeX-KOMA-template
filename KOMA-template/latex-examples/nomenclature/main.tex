@@ -1,0 +1,144 @@
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+
+ 
+
+% The creation of the nomenclature list is very similar to the creation of an
+% index [6, App. A]. You need to:
+%   1. Put \usepackage[hoptionsi]{nomencl} in the preamble of your document.
+%   2. Put \makenomenclature in the preamble of your document.
+%   3. Issue the \nomenclature command (see Section 2.2) for each symbol
+%      you want to have included in the nomenclature list. The best place
+%      for this command is immediately after you introduce the symbol for
+%      the first time.
+%   4. Put \printnomenclature at the place you want to have your nomenclature
+%      list appear, generally after toc or something.
+%      
+%  Now put your file through LATEX. The command \makenomenclature
+%  will instruct LATEX to open the nomenclature file main.nlo corresponding
+%  to your LATEX file main.tex and to write the information
+%  from your \nomenclature commands to this file.
+
+%  The next step is to invoke MakeIndex. You should instruct MakeIndex
+%  to use hfilenamei.nlo as your input file, use nomencl.ist as your style
+%  file1, and write output to the file hfilenamei.nls. How to do this depends
+%  on your implementation of MakeIndex. For most UNIX implementations
+%  you should write something like
+%   
+%     makeindex main.nlo -s nomencl.ist -o main.nls
+
+%  To configure TeXstudio to compile index
+%    1. configure index build to build nomencl index
+%         Options->Configure TeXstudio->Commands->Make Index
+%         
+%         makeindex %.nlo -s nomencl.ist -o %.nls -t %.nlg
+%
+%	      %.nlo, %.nls, %.nlg will just pick up whatever tex file
+%         TeXstudion compiles, e.g. main.tex -> main.nlo, etc...
+%
+%    2. actual compile the index
+%       makeindex goes through the document looking for the entries in main.nlo
+%       writes page number of \nomenclature{}{} command, should be first 
+%       occurence of the symbol
+%
+%		  Tools->Index, or
+%         Tools->Commands->Make Index
+
+%  Now you have the file main.nls that contains your nomenclature
+%  list properly ordered. The last step is to invoke LATEX on your master
+%  file main.tex once more. The \printnomenclature{} command will input 
+%  your .nls file and process it accordingly to the current options typesetting
+%  it into main.pdf. 
+
+% see:
+%   https://www.youtube.com/watch?v=Ss1XfsaAnfs
+%  
+
+
+\documentclass[12pt,a4paper]{report}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{lipsum, xcolor}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+\usepackage{ifthen}
+
+\usepackage{menukeys}
+
+
+\usepackage[intoc,refpage]{nomencl}
+\makenomenclature
+
+
+\title{\color{red}Grouping and Sorting of Nomenclature}
+\author{\color{blue}Chandra Has}
+
+
+
+
+\renewcommand{\pagedeclaration}[1]{\dotfill \hyperpage{#1}}
+\newcommand{\nmr}[3][R]{\nomenclature[#1]{#2}{#3}}
+\newcommand{\nmg}[3][G]{\nomenclature[#1]{#2}{#3}}
+
+\renewcommand{\nomgroup}[1]{ %
+\ifthenelse{\equal{#1}{R}}{\vspace{1cm} \item[\bfseries \Large Roman]}{ %
+\ifthenelse{\equal{#1}{G}}{\item[\bfseries \Large Greek]}{}
+}
+}
+
+
+
+
+
+%\newcommand{\chstr}[1]{
+%
+%\ifstrequal{#1}{ch}{name: Chandra Has}{no name}
+%
+%}
+
+
+
+
+
+
+\begin{document}
+	
+
+
+
+	
+\pagecolor{red!3}
+\maketitle
+\tableofcontents
+\clearpage
+\lipsum*
+
+\nmr[RRa]{R}{Radius of circle}
+\nmr[RGr]{$G_\mathrm{r}$}{Gravity}
+\nmr[RMa]{$M_\mathrm{m}$}{Mass of moon}
+\nmg[Gang]{$\alpha_{\mathrm{a}}$}{Angular acceleration}
+\nmg[Gvisc]{$\eta$}{Viscosity}
+\nmg[Gvisc0]{$\eta_0$}{Viscosity of fluid 2}
+
+\lipsum*
+
+\nmr[RCe]{C}{Center of circle}
+\nmr[REe]{$E^{\mathrm{O}}$}{Energy}
+\nmr[Rno]{n}{No. of proton}
+\nmg[GShape]{$\beta$}{Shape factor}
+\nmg[GSurface]{$\Gamma_{\mathrm{e}}$}{Surface excess}
+
+
+% this will
+\clearpage
+This is the page before we printnomenclature
+If the nomenclature list doesn't appear then check you have run
+\emph{makeindex} \menu{Tools > Index}
+
+\printnomenclature
+
+
+
+
+
+
+\end{document}  
