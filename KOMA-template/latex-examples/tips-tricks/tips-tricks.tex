@@ -14,6 +14,12 @@
 
 
 % source code listing lstlistings
+% PJC
+% font for computer listing
+% http://nepsweb.co.uk/docs/progfonts.pdf
+% To use Bera Mono as the default typewriter font, put the following in the preamble:
+\usepackage[scaled]{beramono}
+\usepackage[T1]{fontenc}
 \usepackage{listings}
 
 
@@ -73,6 +79,9 @@ correctly without the use of additional packages.
 \usepackage [ utf8x ] { inputenc } 
 \usepackage [ T1 ] {fontenc }
 \end{verbatim}
+
+
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true}
 
 %\begin{comment}
 % here we create a lstlisting format for LaTeX

@@ -99,10 +99,34 @@
 %\usepackage{charter}\linespread{1.05} %% Charter
 %\usepackage{bookman}                  %% Bookman (laedt Avant Garde !!)
 %\usepackage{newcent}                  %% New Century Schoolbook (laedt Avant Garde !!)
+%%
 %% ===== Sans Serif ====================================================
+% PJC
+%  switching default font to san serif from Palatino
+% original
 %\renewcommand{\familydefault}{\sfdefault}  %% this one in *combination* with the default mathpazo package
+% my change ti switch from default font to San Serif
+\renewcommand{\familydefault}{\sfdefault}  %% this one in *combination* with the default mathpazo package
+
 %\usepackage{cmbright}                  %% CM-Bright (eigntlich eine Familie)
 %\usepackage{tpslifonts}                %% tpslifonts % Font for Slides
+
+
+% PJC
+% font for computer listing
+% http://nepsweb.co.uk/docs/progfonts.pdf
+% To use Bera Mono as the default typewriter font, put the following in the preamble:
+% \usepackage[scaled]{beramono}
+% \usepackage[T1]{fontenc}
+%If only occasional use of the font is needed then put this is the preamble after
+%the main font families have been selected:
+%\edef\oldtt{\ttdefault}
+%\usepackage[scaled]{beramono}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\ttdefault{\oldtt}
+%\newcommand{\bera}[1]{{\fontfamily{fvm}\selectfont #1}}
+
+
 
 
 %doc% 

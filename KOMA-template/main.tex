@@ -233,7 +233,14 @@
 %% acronyms in small caps: \myacro{UNESCO}
 
 
+
 \input{template/pdf_settings}  %% should be *last* definitions in preamble!
+
+% see tips-tricks.pdf should be loaded nearly last to ensure you get appropriate behaviour in
+% in all the packages that cleveref has to alter
+% have all the usual ref just with cin front cref,
+\usepackage{cleveref}
+
 %% ========================================================================
 %%%% begin{document}
 %% ========================================================================
@@ -275,6 +282,7 @@
 
 \input{example-short-chapter}   %% remove this line to get rid of the example chapter
 \input{example-style-chapter}   %% remove this line to get rid of the style chapter
+\input{example-math-chapter}
 
 %% include tex file chapters:
 % \include{introduction}        %% this is a suggestion: you have to create this file on demand

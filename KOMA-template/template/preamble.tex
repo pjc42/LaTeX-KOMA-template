@@ -453,6 +453,13 @@ draft=\mydraft,      %% if true: included graphics are omitted and black boxes
 %doc%
 \usepackage[\mylanguage]{babel}  %% used languages; default language is *last* language of options
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% set headers and foots for doc
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 %doc%
 %doc% \subsection{\texttt{scrpage2}: Headers and footers}
 %doc%
@@ -467,6 +474,23 @@ draft=\mydraft,      %% if true: included graphics are omitted and black boxes
 \ifoot[]{HSE: does this work in draft}
 \cfoot[]{}
 \ofoot[\pagemark]{\pagemark} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%% math related
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% use mathtools
+%   ref: https://mirror.hmc.edu/ctan/macros/latex/contrib/mathtools/mathtools.pdf
+%
+% The mathtools package is an extension package to amsmath. There are two things
+% on mathtools’ agenda: (1) correct various bugs/defeciencies in amsmath until
+% these are fixed by the AMS and (2) provide useful tools for mathematical typesetting,
+% be it a small macro for typesetting a prescript or an underbracket, or entirely
+% new display math constructs such as a multlined environment.
+\usepackage{amsmath}    % mathtools will load it anyway as its a dependency for mathtools
+\usepackage{mathtools}
+
 
 %doc%
 %doc% \subsection{References}\myimportant
